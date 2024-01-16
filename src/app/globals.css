@@ -5,5 +5,5 @@
 @import "tailwindcss/utilities";
 
 .custom-shadow{
-    background: linear-gradient(to top, #e7e5e4, white 30%); /* Adjust the colors as needed */
+    background: linear-gradient(to top, #d1d5db, white 25%); /* Adjust the colors as needed */
   }

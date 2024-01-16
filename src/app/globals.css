@@ -3,3 +3,7 @@
 @import "tailwindcss/components";
 
 @import "tailwindcss/utilities";
+
+.custom-shadow{
+    background: linear-gradient(to top, #e7e5e4, white 30%); /* Adjust the colors as needed */
+  }

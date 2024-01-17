@@ -1,11 +1,11 @@
 'use client'
-import { Droparea } from "@/app/component/Droparea"
-import { OwnerCard } from "@/app/component/OwnerCard"
-import { QualityCard } from "./component/QualityCard"
 import { ChevronDown } from "lucide-react"
 import { ChevronUp } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import React, { useState, useEffect } from 'react';
+import { Ownercard } from "@/components/ui/ownercard"
+import { Qualitycard } from "@/components/ui/qualitycard"
+import { Droparea } from "@/components/ui/droparea"
 
 export default function Home() {
   const [isScrolledToBottom, setIsScrolledToBottom] = useState(false);
@@ -50,8 +50,8 @@ export default function Home() {
       </Button>
       </div>
       <div className="bg-gray-300 flex flex-row pb-10 justify-between px-10">
-        <OwnerCard/>
-        <QualityCard/>
+        <Ownercard/>
+        <Qualitycard/>
       </div>
     </div>
   )

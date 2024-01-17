@@ -9,7 +9,7 @@ const tick = (
     stroke="currentColor"
     className="w-6 h-6 text-green-600 mr-3"
   >
-    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
   </svg>
 );
 
@@ -22,11 +22,11 @@ const cross = (
     stroke="currentColor"
     className="w-6 h-6 text-red-600 mr-3"
   >
-    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
   </svg>
 );
 
-export const QualityCard: React.FC = () => {
+export const Qualitycard: React.FC = () => {
   return (
     <div className="w-5/6 mx-16 rounded-xl bg-gray-100 p-8">
       <p className="text-xl font-semibold">Your artwork is of high quality.</p>

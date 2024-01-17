@@ -6,14 +6,14 @@ export const Ownercard: React.FC = () => {
       <p className='text-xl font-semibold'>You are the owner of this artwork.</p>
       <div className='py-8'>
         <p className='text-sm pb-2 flex'>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3.5" stroke="currentColor" className="w-12 h-6 text-green-600 mr-3">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" className="w-12 h-6 text-green-600 mr-3">
             <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
           </svg>
           Make sure your artworks don't infringe upon the copyrights,
           moral rights, publicity rights, privacy rights or any other rights of another person or third party.
         </p>
         <p className='text-sm pb-2 flex'>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-8 h-6 text-red-600 mr-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.2" stroke="currentColor" className="w-8 h-6 text-red-600 mr-2">
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
           </svg>
           We have a zero tolerance policy regarding intellectual property rights infringement.

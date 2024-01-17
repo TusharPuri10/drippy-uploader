@@ -39,7 +39,7 @@ export default function Home() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [window.scrollY]);
+  }, []);
   
   
   return (

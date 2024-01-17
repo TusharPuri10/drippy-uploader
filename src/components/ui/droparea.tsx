@@ -55,7 +55,52 @@ export const Droparea: React.FC = () => {
               type: "Illustration",
               collection: "",
             }]);
-          router.push('/uploads');
+            grecaptcha.enterprise.ready(async () => {
+              const token = await grecaptcha.enterprise.execute('6LdYx1MpAAAAAJO3fcaeh4QDJ_Xnt4HNOpmNCaS8', {action: 'verify'});
+              // router.push('/uploads');
+
+              const postData = async (url: string, data: any) => {
+                const response = await fetch(url, {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify(data),
+                });
+
+                console.log(response);
+                if (!response.ok) {
+                  throw new Error('Failed to send the HTTP POST request.');
+                }
+
+                return response.json();
+              };
+
+              // ...
+
+              // Inside your Droparea component:
+              const sendRequest = async (token: string) => {
+                const url = 'https://recaptchaenterprise.googleapis.com/v1/projects/cloudstash-403109/assessments?key=6LdYx1MpAAAAAJO3fcaeh4QDJ_Xnt4HNOpmNCaS8';
+                const requestData = {
+                  event: {
+                    token: token,
+                    siteKey: '6LdYx1MpAAAAAJO3fcaeh4QDJ_Xnt4HNOpmNCaS8',
+                  },
+                };
+
+                try {
+                  const response = await postData(url, requestData);
+                  console.log(response);
+                  // Handle the response as needed
+                } catch (error) {
+                  console.error(error);
+                  // Handle the error
+                }
+              };
+
+              // Call the sendRequest function with the token value
+              sendRequest(token);
+            });
         } else {
           console.log("Please upload only images.");
           // You may want to provide some user feedback, e.g., show an error message.

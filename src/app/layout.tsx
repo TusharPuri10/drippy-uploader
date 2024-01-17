@@ -19,6 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className }>
+        <head>
+          <script src="https://www.google.com/recaptcha/enterprise.js?render=6LdYx1MpAAAAAJO3fcaeh4QDJ_Xnt4HNOpmNCaS8"></script>
+        </head>
         <RecoidContextProvider>{children}</RecoidContextProvider>
       </body>
     </html>

@@ -1,23 +1,24 @@
 "use client";
-import { fileState } from '../recoilContextProvider'
-import { useRecoilState } from 'recoil'
+import { artwork, artworkState, selectedArt } from '../recoilContextProvider'
+import { useRecoilValue, useRecoilState } from 'recoil'
 import ArtworkCard from '@/components/ui/artworkcard';
 import UploadCard from '@/components/ui/uploadcard';
 import Editor from '@/components/ui/editor';
 
 export default function Home() {
-  const [file, setFile] = useRecoilState(fileState);
+  const artworklist = useRecoilValue(artworkState);
+  const [selectedArtID, setSelectedArt] = useRecoilState(selectedArt);
   return (
-    <div className='bg-gray-100 flex justify-between h-screen p-4'>
-      <div className='grid grid-cols-4 grid-flow-row '>
-        {file.map((file) => (
-          <ArtworkCard file={file} />
+    <div className='flex justify-between p-4' onDoubleClick={()=>setSelectedArt("")}>
+      <div className={` ${selectedArtID==="" ? "grid grid-cols-5" : "grid grid-cols-4"} grid-flow-row`}>
+        {artworklist.map((artwork: artwork) => (
+          <ArtworkCard key={artwork.id} {...artwork}/>
         ))}
         <UploadCard />
       </div>
-      <div className='fixed right-0 h-screen'>
+      {selectedArtID != ""  && <div className='fixed right-0 h-screen'>
         <Editor />
-      </div>
+      </div>}
     </div>
   )
 }

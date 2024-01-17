@@ -28,7 +28,9 @@ export default function Home() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const isBottom = window.scrollY + window.innerHeight >= document.body.scrollHeight;
+      // console.log(window.scrollY + window.innerHeight, document.body.scrollHeight);
+      const isBottom = window.scrollY + window.innerHeight + 10 >= document.body.scrollHeight;
+      console.log(isBottom);
       setIsScrolledToBottom(isBottom);
     };
 
@@ -37,12 +39,12 @@ export default function Home() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [window.scrollY]);
   
   
   return (
     <div>
-      <div className="flex flex-col items-center mt-32 custom-shadow">
+      <div className="flex flex-col items-center pt-32 custom-shadow">
         <Droparea />
       <h2 className="mt-16 mb-2 text-3xl font-semibold text-gray-700"> Before you upload, Please make sure:</h2>
       <Button onClick={handleScrollDown} size="icon" className="mx-auto mt-16 mb-10 flex rounded-2xl hover:border-2 hover:border-stone-400 shadow shadow-stone-600">

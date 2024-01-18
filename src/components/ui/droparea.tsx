@@ -72,10 +72,10 @@ export const Droparea: React.FC = () => {
                   e.preventDefault();
                   grecaptcha.enterprise.ready(async () => {
                     await grecaptcha.enterprise.execute('6LeCTVQpAAAAAO_BGbVsNvtOSrl3JlRna_zBt8xn', {action: 'LOGIN'}).then((token) => {
-                      axios.post("https://recaptchaenterprise.googleapis.com/v1/projects/drippy-uploader/6LeCTVQpAAAAAO_BGbVsNvtOSrl3JlRna_zBt8xn", {
-                        "event": {
-                          "token": token,
-                          "siteKey": "6LeCTVQpAAAAAO_BGbVsNvtOSrl3JlRna_zBt8xn",
+                      axios.post("https://recaptchaenterprise.googleapis.com/v1/projects/drippy-uploader/assessments?key=6LeCTVQpAAAAAO_BGbVsNvtOSrl3JlRna_zBt8xn", {
+                        event: {
+                          token: token,
+                          siteKey: "6LeCTVQpAAAAAO_BGbVsNvtOSrl3JlRna_zBt8xn",
                         }
                       }).then((response) => {
                         console.log(response);

@@ -8,28 +8,39 @@ import { artworkState } from '@/app/recoilContextProvider';
 import { useSetRecoilState } from 'recoil';
 import { DropzoneOptions } from 'react-dropzone';
 import { useEffect } from 'react';
+import { useState } from 'react';
+import CaptchaComponent from './captcha';
+import { captchaState } from '@/app/recoilContextProvider';
+import { useRecoilState } from 'recoil';
 
 export const Droparea: React.FC = () => {
 
   const router = useRouter()
   const setArtwork = useSetRecoilState(artworkState); 
+  const [isCaptchaVerified, setCaptchaVerified] = useRecoilState(captchaState);
   const dropzoneOptions: DropzoneOptions = {
     accept: {
       'image/*': ['.png'],
     },
   };
+  const [captcha, setCaptcha] = useState(false);
 
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://www.google.com/recaptcha/api.js';
-    script.async = true;
-    script.defer = true;
-    document.body.appendChild(script);
-  }, []);
+    if (isCaptchaVerified) {
+      router.push('/uploads');
+      setTimeout(() => {
+        setCaptchaVerified(false);
+        setCaptcha(false);
+      }, 5000);
+    }
+  }, [isCaptchaVerified]);
+
 
   return (
     <div className="w-1/2">
+      {captcha && <CaptchaComponent />}
       <Dropzone
+      noClick={captcha}
       {...dropzoneOptions}
       onDrop={acceptedFiles => {
         const isImage = acceptedFiles.every(file => {
@@ -53,7 +64,7 @@ export const Droparea: React.FC = () => {
               type: "Illustration",
               collection: "",
             }]);
-          router.push('/uploads');
+            setCaptcha(true);
         } else {
           console.log("Please upload only images.");
           // You may want to provide some user feedback, e.g., show an error message.
@@ -64,7 +75,6 @@ export const Droparea: React.FC = () => {
           <div {...getRootProps()} className="flex flex-col items-center h-60 w-full border-4 border-gray-400 border-dotted rounded-xl">
               <input {...getInputProps()} />
               <Button className="text-md bg-blue-500 hover:bg-blue-600 text-white mt-16 rounded-xl">Add artwork</Button>
-              {/* <div className="g-recaptcha" data-sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}></div> */}
               <p className="mt-6 text-gray-500" >or drop and drag your artwork here</p>
           </div>
           </section>

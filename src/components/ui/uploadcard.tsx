@@ -28,7 +28,7 @@ const UploadCard: React.FC = () => {
     };
 
     return (
-        <div className="relative card w-52 h-80 border border-2 border-dashed border-gray-400 bg-gray-100 mx-4 my-2">
+        <div className="relative card w-48 h-72 border border-2 border-dashed border-gray-400 bg-gray-100 m-2">
             <div className="card-content">
             <Dropzone
       {...dropzoneOptions}

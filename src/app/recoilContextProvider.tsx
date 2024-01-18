@@ -49,6 +49,11 @@ export const selectedArt = atom<string>({
     default: "",
 });
 
+export const captchaState = atom<boolean>({
+    key: "captchaState",
+    default: false,
+});
+
 export default function RecoidContextProvider({ children }: { children: React.ReactNode }) {
   return <RecoilRoot>{children}</RecoilRoot>;
 }   

@@ -19,33 +19,33 @@ const Editor: React.FC = () => {
     const id = useRecoilValue(selectedArt);
     const [artworkitem, setArtworkitem] = useRecoilState(artworkItem(id));
     return (
-        <ScrollArea indicatorColor="bg-gray-300" className="h-3/4 card w-96 border border-2 border-blue-400 shadow-xl bg-gray-100 m-6 p-4">
+        <ScrollArea indicatorColor="bg-gray-300" className="h-3/4 card w-96 border border-2 border-blue-400 shadow-xl bg-gray-100 mr-4 p-4">
             <h2 className='font-semibold text-lg'>Editing </h2>
             <span>{artworkitem?.file.name}</span>
             <div className="card-content p-4">
-                <div className='space-y-8'>
-                    <div id='title' className='space-y-2'>
+                <div className='space-y-6'>
+                    <div id='title' className='space-y-1'>
                         <p className='font-semibold'>Title</p>
-                        <p className='text-sm text-gray-700'>Proper title will boost your artworks discoverability</p>
-                        <a href="#" className='text-blue-500 text-sm'>How to create a proper title?</a>
-                        <input type="text" className="border-2 border-gray-300 w-full"/>
+                        <p className='text-xs text-gray-700'>Proper title will boost your artworks discoverability</p>
+                        <a href="#" className='text-blue-500 text-xs'>How to create a proper title?</a>
+                        <input type="text" className="border-2 border-gray-300 w-full text-sm"/>
                         <p className='text-xs text-gray-600'>26 characters left</p>
                     </div>
-                    <div id='tags' className='space-y-2'>
+                    <div id='tags' className='space-y-1'>
                         <div className='flex justify-between'>
                             <p className='font-semibold'>Tags <span className='text-sm text-gray-600 font-normal'>(upto 15 tags)</span></p>
-                            <a href="#" className='text-blue-500 text-sm'>See examples</a>
+                            <a href="#" className='text-blue-500 text-xs'>See examples</a>
                         </div>
-                        <p className='text-sm text-gray-700'>
+                        <p className='text-xs text-gray-700'>
                             Try to be literal and use associations. Tags should be
                             ordered by their relative importance
                             How to choose the best tags?
                         </p>
                         <textarea role="text-input" className="resize-none w-full border-2 border-gray-300"/>
                     </div>
-                    <div id='description' className='space-y-2'>
+                    <div id='description' className='space-y-1'>
                         <p className='font-semibold'>Description <span className='text-sm text-gray-600 font-normal'>(optional)</span></p>
-                        <p className='text-sm text-gray-700'>
+                        <p className='text-xs text-gray-700'>
                             Describe your artwork as clearly as possible to help
                             cutomers understand it's context
                             How to waite a good descuption?
@@ -53,9 +53,9 @@ const Editor: React.FC = () => {
                         <textarea role="text-input" className="resize-none w-full border-2 border-gray-300"/>
                         <p className='text-xs text-gray-600'>140 characters left</p>
                     </div>
-                    <div id='category' className='space-y-2'>
+                    <div id='category' className='space-y-1'>
                     <p className='font-semibold'>Category <span className='text-sm text-gray-600 font-normal'>(pick one)</span></p>
-                        <p className='text-sm text-gray-700'>choose a category best suited for your art piece</p>
+                        <p className='text-xs text-gray-700'>choose a category best suited for your art piece</p>
                         <ScrollArea indicatorColor="bg-blue-200" className='h-20 border-2 border-gray-200'>
                             <div className='grid grid-cols-2 text-sm px-4 py-1'>
                                 <div>
@@ -101,9 +101,9 @@ const Editor: React.FC = () => {
                             </div>
                         </ScrollArea>
                     </div>
-                    <div id='type' className='space-y-2'>
+                    <div id='type' className='space-y-1'>
                         <p className='font-semibold'>Type</p>
-                        <p className='text-sm text-gray-700'>choose whether your artwork is a photo or an illustration.</p>
+                        <p className='text-xs text-gray-700'>choose whether your artwork is a photo or an illustration.</p>
                         <RadioGroup defaultValue="comfortable" className='flex flex-row justify-between pr-28'>
                             <div className="flex items-center space-x-2">
                                 <RadioGroupItem value="Illustration" id="r1" />
@@ -115,9 +115,9 @@ const Editor: React.FC = () => {
                             </div>
                         </RadioGroup>
                     </div>
-                    <div id='collection' className='space-y-2'>
+                    <div id='collection' className='space-y-1'>
                         <p className='font-semibold'>Collection</p>
-                        <p className='text-sm text-gray-700'>Try to create collections with one leading theme. our customers love it!</p>
+                        <p className='text-xs text-gray-700'>Try to create collections with one leading theme. our customers love it!</p>
                         <Select>
                             <SelectTrigger className="w-full">
                                 <SelectValue placeholder="Select a collection" />

@@ -8,9 +8,10 @@ import Editor from '@/components/ui/editor';
 export default function Home() {
   const artworklist = useRecoilValue(artworkState);
   const [selectedArtID, setSelectedArt] = useRecoilState(selectedArt);
+  
   return (
     <div className='flex justify-between p-4' onDoubleClick={()=>setSelectedArt("")}>
-      <div className={` ${selectedArtID==="" ? "grid grid-cols-5" : "grid grid-cols-4"} grid-flow-row`}>
+      <div className={` ${selectedArtID==="" ? "grid grid-cols-6" : "grid grid-cols-4"} grid-flow-row`}>
         {artworklist.map((artwork: artwork) => (
           <ArtworkCard key={artwork.id} {...artwork}/>
         ))}

@@ -7,7 +7,7 @@ import React from 'react';
 import { artworkState } from '@/app/recoilContextProvider';
 import { useSetRecoilState } from 'recoil';
 import { DropzoneOptions } from 'react-dropzone';
-import ReCAPTCHA from 'react-google-recaptcha';
+import axios from 'axios';
 
 interface File {
   key: string;
@@ -33,6 +33,7 @@ export const Droparea: React.FC = () => {
   return (
     <div className="w-1/2">
       <Dropzone
+      noClick={true}
       {...dropzoneOptions}
       onDrop={acceptedFiles => {
         const isImage = acceptedFiles.every(file => {
@@ -65,9 +66,25 @@ export const Droparea: React.FC = () => {
       {({getRootProps, getInputProps}) => (
           <section>
           <div {...getRootProps()} className="flex flex-col items-center h-60 w-full border-4 border-gray-400 border-dotted rounded-xl">
-              <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!} className='mx-auto'/>
               <input {...getInputProps()} />
-              <Button className="text-md bg-blue-500 hover:bg-blue-600 text-white mt-16 rounded-xl">Add artwork</Button>
+              <Button className="text-md bg-blue-500 hover:bg-blue-600 text-white mt-16 rounded-xl"
+              onClick={(e) => {
+                  e.preventDefault();
+                  grecaptcha.enterprise.ready(async () => {
+                    await grecaptcha.enterprise.execute('6LeCTVQpAAAAAO_BGbVsNvtOSrl3JlRna_zBt8xn', {action: 'LOGIN'}).then((token) => {
+                      axios.post("https://recaptchaenterprise.googleapis.com/v1/projects/drippy-uploader/6LeCTVQpAAAAAO_BGbVsNvtOSrl3JlRna_zBt8xn", {
+                        "event": {
+                          "token": token,
+                          "siteKey": "6LeCTVQpAAAAAO_BGbVsNvtOSrl3JlRna_zBt8xn",
+                        }
+                      }).then((response) => {
+                        console.log(response);
+                      });
+                    });
+                  });
+                  
+              }}
+              >Add artwork</Button>
               <p className="mt-6 text-gray-500" >or drop and drag your artwork here</p>
           </div>
           </section>

@@ -7,6 +7,7 @@ const CaptchaComponent: React.FC = () => {
     const [isCaptchaVerified, setCaptchaVerified] = useRecoilState(captchaState);
 
     useEffect(() => {
+        console.log(process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY);
         const script = document.createElement('script');
         script.src = 'https://www.google.com/recaptcha/api.js';
         script.async = true;

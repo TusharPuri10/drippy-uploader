@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-          <script src="https://www.google.com/recaptcha/enterprise.js?render=6LdYx1MpAAAAAJO3fcaeh4QDJ_Xnt4HNOpmNCaS8"></script>
+          <script src="https://www.google.com/recaptcha/enterprise.js?render=6LeCTVQpAAAAAO_BGbVsNvtOSrl3JlRna_zBt8xn"></script>
         </head>
       <body className={inter.className }>
         <RecoidContextProvider>{children}</RecoidContextProvider>

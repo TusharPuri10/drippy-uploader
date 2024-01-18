@@ -26,7 +26,6 @@ const CaptchaComponent: React.FC = () => {
                                 siteKey: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
                             }
                         };
-    
                         // Send the POST request
                         fetch('https://recaptchaenterprise.googleapis.com/v1/projects/drippy-uploader/assessments?key=' + process.env.NEXT_PUBLIC_RECAPTCHA_API_KEY, {
                             method: 'POST',

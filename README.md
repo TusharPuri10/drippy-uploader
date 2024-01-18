@@ -1,10 +1,16 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js reCAPTCHA v2 Template Website
+
+This is a template website built with the latest version of [Next.js](https://nextjs.org/) and integrated with [reCaptcha V2](https://developers.google.com/recaptcha/docs/display) for enhanced security. The project also utilizes Tailwind CSS for styling and includes components from Shadcn UI for a sleek and modern user interface. The goal of this project is to provide a starting point for developers to get inspiration and kickstart their own development of captcha based project.
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository to your local machine.
 
 ```bash
+git clone https://github.com/TusharPuri10/nextjs-reCAPTCHA-v2-template.git
+cd nextjs-reCAPTCHA-v2-template
+
+## first run the development server
 npm run dev
 # or
 yarn dev
@@ -29,8 +35,14 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Contributing
+Thank you for considering contributing to this project! To get started, follow these steps:
+1. Fork this repository.
+2. Create a new branch for your changes.
+3. Make your changes and commit them.
+4. Submit a pull request.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+If you have suggestions, bug reports, or questions, feel free to open an issue.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+License
+This project is licensed under the MIT License - see the LICENSE file for details.

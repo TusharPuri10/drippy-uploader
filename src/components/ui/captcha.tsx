@@ -17,15 +17,41 @@ const CaptchaComponent: React.FC = () => {
             window.grecaptcha.ready(() => {
                 window.grecaptcha.render('recaptcha', {
                     sitekey: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
-                    callback: () => {
-                        // This function will be called when the user successfully completes the reCAPTCHA
-                        setCaptchaVerified(true);
+                    callback: (token) => {
+                        // Create the request body
+                        const requestBody = {
+                            event: {
+                                token: token,
+                                expectedAction: 'USER_ACTION', // Replace with the user-initiated action
+                                siteKey: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
+                            }
+                        };
+    
+                        // Send the POST request
+                        fetch('https://recaptchaenterprise.googleapis.com/v1/projects/drippy-uploader/assessments?key=' + process.env.NEXT_PUBLIC_RECAPTCHA_API_KEY, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(requestBody),
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            // Check the score
+                            if (data.riskAnalysis.score > 0.5) {
+                                // If the score is high, set isCaptchaVerified to true
+                                setCaptchaVerified(true);
+                            }
+                        })
+                        .catch((error) => {
+                            console.error('Error:', error);
+                        });
                     }
                 });
             });
         };
         document.body.appendChild(script);
-      }, []);
+    }, []);
 
 
 

@@ -28,10 +28,10 @@ const cross = (
 
 export const Qualitycard: React.FC = () => {
   return (
-    <div className="w-5/6 mx-16 rounded-xl bg-gray-100 p-8">
+    <div className="w-2/3 mx-6 rounded-xl bg-gray-100 p-6">
       <p className="text-xl font-semibold">Your artwork is of high quality.</p>
       <p className="font-semibold pt-6">DO's</p>
-      <div className="py-4 space-y-2">
+      <div className="py-4 space-y-1">
         <p className="text-sm flex items-start">
           {tick}
           Upload only high-quality images in JPG format.
@@ -46,7 +46,7 @@ export const Qualitycard: React.FC = () => {
         </p>
       </div>
       <p className="font-semibold pt-4">DONT's</p>
-      <div className="pt-4 pb-6 space-y-2">
+      <div className="pt-4 pb-6 space-y-1">
         <p className="text-sm flex items-start">
           {cross}
           Do not place text or content too close to the edge of the design.
@@ -65,8 +65,8 @@ export const Qualitycard: React.FC = () => {
         </p>
       </div>
       <hr className="h-px bg-gray-300 my-4 border-0" />
-      <p>More tips on preparing your artworks:</p>
-      <p className="text-blue-500 font-semibold">Print guide: How to get your artworks approved?</p>
+      <p className='text-sm'>More tips on preparing your artworks:</p>
+      <p className="text-blue-500 font-semibold text-sm">Print guide: How to get your artworks approved?</p>
     </div>
   );
 };

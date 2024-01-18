@@ -2,9 +2,9 @@ import React from 'react';
 
 export const Ownercard: React.FC = () => {
   return (
-    <div className='w-5/6 mx-16 rounded-xl bg-gray-100 p-8'>
+    <div className='w-2/3 mx-6 h-1/2 rounded-xl bg-gray-100 p-6'>
       <p className='text-xl font-semibold'>You are the owner of this artwork.</p>
-      <div className='py-8'>
+      <div className='pt-8 pb-2'>
         <p className='text-sm pb-2 flex'>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" className="w-12 h-6 text-green-600 mr-3">
             <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
@@ -26,8 +26,8 @@ export const Ownercard: React.FC = () => {
         </p>
       </div>
       <hr className="h-px bg-gray-300 my-4 border-0" />
-      <p>More about ownership policy:</p>
-      <p className='text-blue-500 font-semibold'>Terms of Use</p>
+      <p className='text-sm'>More about ownership policy:</p>
+      <p className='text-blue-500 font-semibold text-sm'>Terms of Use</p>
     </div>
   );
 };

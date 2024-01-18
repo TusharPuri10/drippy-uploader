@@ -30,7 +30,6 @@ export const Droparea: React.FC = () => {
   return (
     <div className="w-1/2">
       <Dropzone
-      noClick={true}
       {...dropzoneOptions}
       onDrop={acceptedFiles => {
         const isImage = acceptedFiles.every(file => {
@@ -65,7 +64,7 @@ export const Droparea: React.FC = () => {
           <div {...getRootProps()} className="flex flex-col items-center h-60 w-full border-4 border-gray-400 border-dotted rounded-xl">
               <input {...getInputProps()} />
               <Button className="text-md bg-blue-500 hover:bg-blue-600 text-white mt-16 rounded-xl">Add artwork</Button>
-              <div className="g-recaptcha" data-sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}></div>
+              {/* <div className="g-recaptcha" data-sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}></div> */}
               <p className="mt-6 text-gray-500" >or drop and drag your artwork here</p>
           </div>
           </section>

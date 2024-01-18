@@ -56,7 +56,7 @@ const Editor: React.FC = () => {
                     <div id='category' className='space-y-2'>
                     <p className='font-semibold'>Category <span className='text-sm text-gray-600 font-normal'>(pick one)</span></p>
                         <p className='text-sm text-gray-700'>choose a category best suited for your art piece</p>
-                        <ScrollArea indicatorColor="bg-blue-400" className='h-20 border-2 border-gray-200'>
+                        <ScrollArea indicatorColor="bg-blue-200" className='h-20 border-2 border-gray-200'>
                             <div className='grid grid-cols-2 text-sm px-4 py-1'>
                                 <div>
                                     <Checkbox id="terms" className='mt-1 mr-3'/>

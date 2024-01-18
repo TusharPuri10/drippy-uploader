@@ -21,13 +21,13 @@ const ArtworkCard: React.FC<artwork> = (artwork: artwork) => {
       }, [artworklist]);
 
     return (
-        <div className={` ${((selectedArtID === artwork.id) )? "ring-1 ring-blue-500 ":""} relative card w-52 h-80 shadow-lg bg-gray-100 mx-4 my-2`} onClick={()=>setSelectedArt(artwork.id)}>
+        <div className={` ${((selectedArtID === artwork.id) )? "ring-1 ring-blue-500 ":""} relative card w-52 h-80 shadow-lg bg-gray-100 mx-4 my-2`}>
             <button className="cross-button absolute right-0 p-1" onClick={handleRemove}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 text-gray-500">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
             </svg>
             </button>
-            <div className="card-content">
+            <div className="card-content" onClick={()=>setSelectedArt(artwork.id)}>
                 <div key={artwork.file.name} className='flex flex-col items-center px-4 pt-6 pb-2'>
                     <img
                         src={URL.createObjectURL(artwork.file)}

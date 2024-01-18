@@ -7,18 +7,7 @@ import React from 'react';
 import { artworkState } from '@/app/recoilContextProvider';
 import { useSetRecoilState } from 'recoil';
 import { DropzoneOptions } from 'react-dropzone';
-import axios from 'axios';
-
-interface File {
-  key: string;
-  file: File;
-  title: string;
-  tags: string[];
-  description: string;
-  category: string;
-  type: ("Illustration" | "Photography");
-  collection: string;
-}
+import { useEffect } from 'react';
 
 export const Droparea: React.FC = () => {
 
@@ -29,6 +18,14 @@ export const Droparea: React.FC = () => {
       'image/*': ['.png'],
     },
   };
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://www.google.com/recaptcha/api.js';
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+  }, []);
 
   return (
     <div className="w-1/2">
@@ -67,24 +64,8 @@ export const Droparea: React.FC = () => {
           <section>
           <div {...getRootProps()} className="flex flex-col items-center h-60 w-full border-4 border-gray-400 border-dotted rounded-xl">
               <input {...getInputProps()} />
-              <Button className="text-md bg-blue-500 hover:bg-blue-600 text-white mt-16 rounded-xl"
-              onClick={(e) => {
-                  e.preventDefault();
-                  grecaptcha.enterprise.ready(async () => {
-                    await grecaptcha.enterprise.execute('6LeCTVQpAAAAAO_BGbVsNvtOSrl3JlRna_zBt8xn', {action: 'LOGIN'}).then((token) => {
-                      axios.post("https://recaptchaenterprise.googleapis.com/v1/projects/drippy-uploader/assessments?key=6LeCTVQpAAAAAO_BGbVsNvtOSrl3JlRna_zBt8xn", {
-                        event: {
-                          token: token,
-                          siteKey: "6LeCTVQpAAAAAO_BGbVsNvtOSrl3JlRna_zBt8xn",
-                        }
-                      }).then((response) => {
-                        console.log(response);
-                      });
-                    });
-                  });
-                  
-              }}
-              >Add artwork</Button>
+              <Button className="text-md bg-blue-500 hover:bg-blue-600 text-white mt-16 rounded-xl">Add artwork</Button>
+              <div className="g-recaptcha" data-sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}></div>
               <p className="mt-6 text-gray-500" >or drop and drag your artwork here</p>
           </div>
           </section>

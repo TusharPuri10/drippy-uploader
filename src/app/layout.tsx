@@ -4,6 +4,7 @@ import './globals.css'
 import RecoidContextProvider from "./recoilContextProvider";
 
 
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -18,9 +19,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-          <script src="https://www.google.com/recaptcha/enterprise.js?render=6LeCTVQpAAAAAO_BGbVsNvtOSrl3JlRna_zBt8xn"></script>
-        </head>
       <body className={inter.className }>
         <RecoidContextProvider>{children}</RecoidContextProvider>
       </body>

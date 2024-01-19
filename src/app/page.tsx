@@ -41,19 +41,27 @@ export default function Home() {
     };
   }, []);
   
-  
+
   return (
     <div>
-      <div className="flex flex-col items-center pt-32 custom-shadow">
+      <div className="flex flex-col items-center md:pt-32 pt-20 custom-shadow">
         <Droparea />
-      <h2 className="mt-16 mb-2 text-2xl font-semibold text-gray-700"> Before you upload, Please make sure:</h2>
-      <Button onClick={handleScrollDown} size="icon" className="mx-auto mt-16 mb-10 flex rounded-2xl hover:border-2 hover:border-stone-400 shadow shadow-stone-600">
-        {(isScrolledToBottom)?(<ChevronUp className="h-4 w-4" />):(<ChevronDown className="h-4 w-4" />)}
-      </Button>
+        <div className="hidden lg:block">
+          <h2 className="mt-16 mb-2 text-2xl font-semibold text-gray-700"> Before you upload, Please make sure:</h2>
+          <Button onClick={handleScrollDown} size="icon" className="mx-auto mt-16 mb-10 flex rounded-2xl hover:border-2 hover:border-stone-400 shadow shadow-stone-600">
+            {(isScrolledToBottom)?(<ChevronUp className="h-4 w-4" />):(<ChevronDown className="h-4 w-4" />)}
+          </Button>
+        </div>
       </div>
-      <div className="bg-gray-300 flex flex-row pb-6 px-16">
-        <Ownercard/>
-        <Qualitycard/>
+      <div className="hidden lg:block">
+        <div className="bg-gray-300 flex flex-row pb-10 px-16">
+          <Ownercard/>
+          <Qualitycard/>
+        </div>
+      </div>
+      <div className="md:hidden">
+          <img src="/snap.png" alt="" className="w-20 h-20"/>
+          Developer was too lazy to  make this responsive. Please use a desktop.
       </div>
     </div>
   )

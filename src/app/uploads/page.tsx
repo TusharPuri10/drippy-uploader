@@ -11,7 +11,7 @@ export default function Home() {
   
   return (
     <div className='flex justify-between p-4' onDoubleClick={()=>setSelectedArt("")}>
-      <div className={` ${selectedArtID==="" ? "grid grid-cols-6" : "grid grid-cols-4"} grid-flow-row`}>
+      <div className={` ${selectedArtID==="" ? "grid md:grid-cols-6 grid-cols-2" : "grid md:grid-cols-4 grid-cols-1"} grid-flow-row`}>
         {artworklist.map((artwork: artwork) => (
           <ArtworkCard key={artwork.id} {...artwork}/>
         ))}

@@ -18,20 +18,19 @@ export const Droparea: React.FC = () => {
   const router = useRouter()
   const setArtwork = useSetRecoilState(artworkState); 
   const [isCaptchaVerified, setCaptchaVerified] = useRecoilState(captchaState);
+  const [captcha, setCaptcha] = useState(false);
+  const [clicked, setClicked] = useState(false);
   const dropzoneOptions: DropzoneOptions = {
     accept: {
-      'image/*': ['.png'],
+      'image/*': ['.png'], //png
+      "image/jpg": [".jpg", ".jpeg"], // jpg
     },
   };
-  const [captcha, setCaptcha] = useState(false);
 
   useEffect(() => {
-    if (isCaptchaVerified) {
+    if (isCaptchaVerified && clicked) {
       router.push('/uploads');
-      setTimeout(() => {
-        setCaptchaVerified(false);
-        setCaptcha(false);
-      }, 5000);
+      setCaptcha(false);
     }
   }, [isCaptchaVerified]);
 
@@ -53,7 +52,8 @@ export const Droparea: React.FC = () => {
           console.log(acceptedFiles);
           const filekey = acceptedFiles[0].name + Date.now().toString();
           // setFile(acceptedFiles);
-          setArtwork([
+          setArtwork(oldArtwork => [
+            ...oldArtwork,
             {
               id: filekey,
               file: acceptedFiles[0],
@@ -63,8 +63,15 @@ export const Droparea: React.FC = () => {
               category: "",
               type: "Illustration",
               collection: "",
-            }]);
-            setCaptcha(true);
+            }
+          ]);
+            setClicked(true);
+            if(!isCaptchaVerified) {
+              setCaptcha(true);
+            }
+            else {
+              router.push('/uploads');
+            }
         } else {
           console.log("Please upload only images.");
           // You may want to provide some user feedback, e.g., show an error message.

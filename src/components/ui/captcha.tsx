@@ -55,13 +55,9 @@ const CaptchaComponent: React.FC = () => {
 
 
     return (
-        <div
-            className="fixed top-0 left-0 w-full h-full z-50 flex justify-center items-center backdrop-brightness-50 back"
-        >
-            <div
-                className="w-96 h-32 bg-white rounded-xl shadow-md flex justify-center items-center shadow-2xl"
-            >
-                <div id="recaptcha"></div>
+        <div className="fixed top-0 left-0 w-full h-full z-50 flex justify-center items-center backdrop-brightness-50 back">
+            <div className="w-96 h-32 bg-white rounded-xl shadow-md flex justify-center items-center shadow-2xl">
+                    <div id="recaptcha"></div>
             </div>
         </div>
     );

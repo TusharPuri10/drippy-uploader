@@ -1,34 +1,38 @@
 'use client'
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation'
 import Dropzone from 'react-dropzone'
-import { Button } from "@/components/ui/button"
 import { artworkState } from '@/app/recoilContextProvider';
 import { useSetRecoilState } from 'recoil';
 import { DropzoneOptions } from 'react-dropzone';
-
-interface File {
-    key: string;
-    file: File;
-    title: string;
-    tags: string[];
-    description: string;
-    category: string;
-    type: ("Illustration" | "Photography");
-    collection: string;
-  }
+import { captchaState } from '@/app/recoilContextProvider';
+import { useRecoilState } from 'recoil';
+import CaptchaComponent from './captcha';
+import { useEffect } from 'react';
 
 const UploadCard: React.FC = () => {
 
     const setArtwork = useSetRecoilState(artworkState); 
+    const [isCaptchaVerified, setCaptchaVerified] = useRecoilState(captchaState);
+    const [captcha, setCaptcha] = useState(false);
     const dropzoneOptions: DropzoneOptions = {
         accept: {
-        'image/*': ['.png'],
+        'image/*': ['.png'],//png
+        "image/jpg": [".jpg", ".jpeg"], // jpg
         },
     };
 
+    useEffect(() => {
+      if (isCaptchaVerified) {
+          setCaptcha(false);
+      }
+      else {
+        setCaptcha(true);
+      }
+    }, [isCaptchaVerified]);
+
     return (
         <div className="relative card w-48 h-72 border border-2 border-dashed border-gray-400 bg-gray-100 m-2">
+            {captcha && <CaptchaComponent />}
             <div className="card-content">
             <Dropzone
       {...dropzoneOptions}

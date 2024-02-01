@@ -54,6 +54,6 @@ export const captchaState = atom<boolean>({
     default: false,
 });
 
-export default function RecoidContextProvider({ children }: { children: React.ReactNode }) {
+export default function RecoilContextProvider({ children }: { children: React.ReactNode }) {
   return <RecoilRoot>{children}</RecoilRoot>;
 }   
